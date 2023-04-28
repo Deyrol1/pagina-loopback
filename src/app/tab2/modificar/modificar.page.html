@@ -1,0 +1,135 @@
+<ion-header>
+  
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Modificar factura</ion-title>
+    </ion-toolbar>
+  
+</ion-header>
+<ion-content>
+  
+ 
+  <ion-card>
+    <ion-card-header >
+      <ion-item >
+       
+      <ion-card-title slot="start">Registro factura</ion-card-title>
+      <ion-label>
+      <ion-card-subtitle>Factura Nro {{nro}} </ion-card-subtitle>
+      <ion-card-subtitle >
+        Fecha: {{ fechaf}}
+      </ion-card-subtitle>
+      <ion-card-subtitle >
+        encargado:  
+      </ion-card-subtitle>
+    </ion-label>
+    </ion-item>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-row id="tabla" >
+        <ion-col>
+          <ion-text>Categoria</ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text>Producto</ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text>Cantidad</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Precio unidad</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Precio total</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Acciones</ion-text>
+        </ion-col>
+      </ion-row>
+  
+     
+     
+      <ion-col *ngFor="let i of inputRowValues; let ii=index" id="ciclo">
+        <app-agrfact [data]="i" (onDelete)="onDelete($event)"></app-agrfact>
+      </ion-col>
+
+  
+      
+   
+
+      
+      
+      <ion-button id="add_row" class="add" (click)="addRow()"> Agregar fila 
+      </ion-button>
+
+
+
+      <ion-grid id="precios">
+        <ion-row>
+          <ion-col>
+
+            <ion-input color="dark" disabled="true" > subtotal </ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input disabled="true" color="dark" [(ngModel)]="subtotal" (ionChange)="miau()">  </ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-input color="dark" disabled="true">Iva(opcional)</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input placeholder="Iva" color="dark" type="number"  [(ngModel)]="iva" (ionChange)="miau()"></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-input color="dark" disabled="true" >Descuento</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input placeholder="Descuento" color="dark" type="number" [(ngModel)]="descuento" (ionChange)="miau()"> </ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input color="dark" disabled="true">TOTAL</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input disabled="true" color="dark" [(ngModel)]="total"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+   
+  
+    <ion-button color="success" (click)="generar()" >Modificar</ion-button>
+    <ion-button color="danger">Cancelar</ion-button>
+  </ion-card>
+
+
+
+  <h4>Results</h4>
+  
+
+  <div *ngFor="let item of inputRowValues; let i=index">
+    
+    <ion-label> {{item | json }} </ion-label>
+    
+  </div>
+ 
+
+
+
+
+
+ 
+</ion-content>
+

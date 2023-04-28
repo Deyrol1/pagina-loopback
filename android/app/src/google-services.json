@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "691523823297",
+    "project_id": "pagina-ionic-54264",
+    "storage_bucket": "pagina-ionic-54264.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691523823297:android:022d2fb1d10878f7235640",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691523823297-3vdlu6vos72mi96bdjamn3sk5ncai53v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkbPYtwyjXn_ns8uUfMuNhKKkQ4H-8aJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691523823297-3vdlu6vos72mi96bdjamn3sk5ncai53v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
