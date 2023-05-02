@@ -224,6 +224,37 @@ export class BasedatosService {
 
 
 
+  async  actfac(dato:any,id:any){
+
+    console.log("el dato ez:",JSON.stringify(dato))
+    const opt ={
+      url: this.url+"facturas/"+id,
+      data: dato,
+      headers: {"content-type":"application/json"}
+    };
+ 
+  
+
+    const response: HttpResponse = await CapacitorHttp.put(opt);
+
+
+  }
+  async  delfac(id:any){
+
+  
+    const opt ={
+      url: this.url+"facturas/"+id,
+      headers: {"content-type":"application/json"}
+    };
+ 
+  
+
+    const response: HttpResponse = await CapacitorHttp.delete(opt);
+
+
+  }
+
+
 
 
   }

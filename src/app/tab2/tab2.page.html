@@ -53,6 +53,9 @@
       
   
       <ion-item-options side="end">
+        <ion-item-option color="danger"  (click)="eliminar(item.id)"  >Eliminar</ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="start">
         <ion-item-option [routerLink]="['modificar', item.id, (i+1)]">Detalles</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

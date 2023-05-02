@@ -55,7 +55,7 @@ export class ModificarPage implements OnInit {
 
     this.factura = new Factura();
 
-    let dato={                          
+    let dato={                        
       fecha: this.fecha,
       articulos:this.inputRowValues ,
       subtotal:this.subtotal,
@@ -69,7 +69,7 @@ export class ModificarPage implements OnInit {
 
     console.log("factura ez:",this.factura);
 
-    this.base.regfac(this.factura);
+    this.base.actfac(this.factura,this.id);
    }
 
 
@@ -89,6 +89,7 @@ export class ModificarPage implements OnInit {
 
 
   this.base.facturaselect(this.id);
+
   this.facturasub = this.base.facturaselect$().subscribe((res: Factura)=>{
 
     

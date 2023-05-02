@@ -48,6 +48,11 @@ export class Tab2Page {
 
    }
 
+   eliminar(id){
+    this.base.delfac(id);
+
+   }
+
 
 }
 
