@@ -1,4 +1,4 @@
-import { AgrfactComponent } from './../agrfact/agrfact.component';
+
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,8 @@ import { IonicModule } from '@ionic/angular';
 import { AgregarPageRoutingModule } from './agregar-routing.module';
 
 import { AgregarPage } from './agregar.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
@@ -16,8 +18,9 @@ import { AgregarPage } from './agregar.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AgregarPageRoutingModule
+    AgregarPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [AgregarPage,AgrfactComponent]
+  declarations: [AgregarPage]
 })
 export class AgregarPageModule {}

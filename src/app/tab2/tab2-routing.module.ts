@@ -10,6 +10,11 @@ const routes: Routes = [
   {
     path: 'modificar/:id/:i',
     loadChildren: () => import('./modificar/modificar.module').then( m => m.ModificarPageModule)
+  },
+  {
+    path: 'agregar',
+    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule)
+
   }
   ];
 

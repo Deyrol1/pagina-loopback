@@ -6,12 +6,13 @@ import { Component, OnInit,  Input, EventEmitter, Output  } from '@angular/core'
 import { Factura } from 'src/app/modelos/factura';
 import { BasedatosService } from 'src/app/servicios/basedatos.service';
 
+
 @Component({
-  selector: 'app-agrfact',
-  templateUrl: './agrfact.component.html',
-  styleUrls: ['./agrfact.component.scss'],
+  selector: 'app-plantilla',
+  templateUrl: './plantilla.component.html',
+  styleUrls: ['./plantilla.component.scss'],
 })
-export class AgrfactComponent  implements OnInit {
+export class PlantillaComponent  implements OnInit {
 
   
   public categorias:Categoria[] =[];

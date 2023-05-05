@@ -1,4 +1,4 @@
-import { AgrfactComponent } from '../agrfact/agrfact.component';
+
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,8 @@ import { IonicModule } from '@ionic/angular';
 import { ModificarPageRoutingModule } from './modificar-routing.module';
 
 import { ModificarPage } from './modificar.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 
@@ -17,8 +19,10 @@ import { ModificarPage } from './modificar.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ModificarPageRoutingModule
+    ModificarPageRoutingModule,
+    SharedModule
+    
   ],
-  declarations: [ModificarPage,AgrfactComponent]
+  declarations: [ModificarPage]
 })
 export class ModificarPageModule {}
