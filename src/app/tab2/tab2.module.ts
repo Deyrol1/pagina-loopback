@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { Tab3PageRoutingModule } from '../tab3/tab3-routing.module';
-import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   imports: [
     IonicModule,

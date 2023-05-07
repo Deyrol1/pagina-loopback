@@ -254,6 +254,34 @@ export class BasedatosService {
 
   }
 
+  async registrouser(dato:any){
+    const opt ={
+      url: "http://localhost:3000/signup",
+      headers: {"content-type":"application/json"},
+      data:dato
+    };
+ 
+  
+
+    const response: HttpResponse = await CapacitorHttp.post(opt);
+
+
+
+  }
+  async login(dato:any){
+    const opt ={
+      url: "http://localhost:3000/users/login",
+      headers: {"content-type":"application/json"},
+      data:dato
+    };
+ 
+  
+
+    const response: HttpResponse = await CapacitorHttp.post(opt);
+
+
+
+  }
 
 
 

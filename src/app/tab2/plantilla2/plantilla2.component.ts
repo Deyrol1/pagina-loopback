@@ -1,18 +1,19 @@
-import { Categoria } from './../../modelos/categoria';
+import { Categoria } from '../../modelos/categoria';
 
-import { Producto } from './../../modelos/producto';
+import { Producto } from '../../modelos/producto';
 import { Subscription } from 'rxjs';
 import { Component, OnInit,  Input, EventEmitter, Output  } from '@angular/core';
-import { Factura } from 'src/app/modelos/factura'; 
+import { Factura } from 'src/app/modelos/factura';
 import { BasedatosService } from 'src/app/servicios/basedatos.service';
 
 
+
 @Component({
-  selector: 'app-plantilla',
-  templateUrl: './plantilla.component.html',
-  styleUrls: ['./plantilla.component.scss'],
+  selector: 'app-plantilla2',
+  templateUrl: './plantilla2.component.html',
+  styleUrls: ['./plantilla2.component.scss'],
 })
-export class PlantillaComponent  implements OnInit {
+export class Plantilla2Component  implements OnInit {
 
   
   public categorias:Categoria[] =[];

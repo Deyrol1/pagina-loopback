@@ -5,4 +5,5 @@ tslib_1.__exportStar(require("./categoria.repository"), exports);
 tslib_1.__exportStar(require("./item.repository"), exports);
 tslib_1.__exportStar(require("./producto.repository"), exports);
 tslib_1.__exportStar(require("./factura.repository"), exports);
+tslib_1.__exportStar(require("./postear.repository"), exports);
 //# sourceMappingURL=index.js.map

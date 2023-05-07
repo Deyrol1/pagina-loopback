@@ -53,13 +53,16 @@
       </ion-row>
   
      
-     
+     <div *ngIf="inputRowValues">
       <ion-col *ngFor="let i of inputRowValues; let ii=index" id="ciclo">
-        <app-plantilla [data]="i" (onDelete)="onDelete($event)"></app-plantilla> 
-      </ion-col>
+        <app-plantilla2  [data]="i" (onDelete)="onDelete($event)"></app-plantilla2>      
+    </ion-col>
+     </div>
+      
 
   
       
+
 
    
    

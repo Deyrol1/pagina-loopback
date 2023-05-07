@@ -14,15 +14,15 @@
           <ion-card-content>
             <ion-item>
               <ion-label position="floating" >Su correo</ion-label>
-              <ion-input  type="email" placeholder="Correo" [(ngModel)]="usuario.email" required></ion-input>
+              <ion-input  type="email" placeholder="Correo" [(ngModel)]="email" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">La contrasena</ion-label>
-              <ion-input type="password" placeholder="Contrasena" [(ngModel)]="usuario.contrasena" required="miau"></ion-input>
+              <ion-input type="password" placeholder="Contrasena" [(ngModel)]="contrasena" required="miau"></ion-input>
             </ion-item>
           </ion-card-content>
         
-          <ion-button color="secondary"  type="submit">registrar</ion-button>
+          <ion-button color="secondary"  type="submit" (click)="registro()">registrar</ion-button>
           <ion-button color="secondary"  (click)="ingresar()" type="submit">Iniciar sesion</ion-button>
          
         </ion-card>

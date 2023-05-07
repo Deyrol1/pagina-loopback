@@ -9,6 +9,9 @@ const rest_1 = require("@loopback/rest");
 const service_proxy_1 = require("@loopback/service-proxy");
 const path_1 = tslib_1.__importDefault(require("path"));
 const sequence_1 = require("./sequence");
+const authentication_1 = require("@loopback/authentication");
+const authentication_jwt_1 = require("@loopback/authentication-jwt");
+const mongofactura_datasource_1 = require("./datasources/mongofactura.datasource");
 class PruebaApplication extends (0, boot_1.BootMixin)((0, service_proxy_1.ServiceMixin)((0, repository_1.RepositoryMixin)(rest_1.RestApplication))) {
     constructor(options = {}) {
         super(options);
@@ -31,6 +34,14 @@ class PruebaApplication extends (0, boot_1.BootMixin)((0, service_proxy_1.Servic
                 nested: true,
             },
         };
+        this.component(authentication_1.AuthenticationComponent);
+        // Mount jwt component
+        this.component(authentication_jwt_1.JWTAuthenticationComponent);
+        // Bind datasource
+        // This is where your User data will be stored.
+        this.dataSource(mongofactura_datasource_1.MongofacturaDataSource, authentication_jwt_1.UserServiceBindings.DATASOURCE_NAME);
+        // Bind the user service to the one in @loopback/authentication-jwt
+        this.bind(authentication_jwt_1.UserServiceBindings.USER_SERVICE).toClass(authentication_jwt_1.MyUserService);
     }
 }
 exports.PruebaApplication = PruebaApplication;

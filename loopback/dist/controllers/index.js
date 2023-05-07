@@ -8,4 +8,6 @@ tslib_1.__exportStar(require("./producto.controller"), exports);
 tslib_1.__exportStar(require("./facturamongo.controller"), exports);
 tslib_1.__exportStar(require("./categoria-producto.controller"), exports);
 tslib_1.__exportStar(require("./producto-categoria.controller"), exports);
+tslib_1.__exportStar(require("./user.controller"), exports);
+tslib_1.__exportStar(require("./pozt.controller"), exports);
 //# sourceMappingURL=index.js.map

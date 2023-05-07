@@ -1,3 +1,4 @@
+import { BasedatosService } from 'src/app/servicios/basedatos.service';
 import { LoginService } from './../servicios/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,25 +11,40 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
 
-  usuario={
-    email:'',
-    contrasena:''
-  }
+  
 
-
-  correo:any;
+  email:any;
+  contrasena:any;
  
-  ingresar(){
-  
 
-
-      this.router.navigate(['/tabs']);
-    
-  
-  }
-  constructor(private authservice: LoginService,private router: Router) { }
+  constructor(private router: Router, private base: BasedatosService) { }
 
   ngOnInit() {
   }
+
+  ingresar(){
+    let nuevo={
+      email:this.email,
+      password:this.contrasena
+    }
+    this.base.login(nuevo);
+    
+
+
+ 
+
+    this.router.navigate(['/tabs']);
+  
+
+}
+
+registro(){
+
+  let nuevo={
+    email:this.email,
+    password:this.contrasena
+  }
+  this.base.registrouser(nuevo);
+}
 
 }

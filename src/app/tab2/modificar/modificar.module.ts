@@ -9,7 +9,10 @@ import { IonicModule } from '@ionic/angular';
 import { ModificarPageRoutingModule } from './modificar-routing.module';
 
 import { ModificarPage } from './modificar.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { Plantilla2Component } from '../plantilla2/plantilla2.component';
+
+
+
 
 
 
@@ -20,9 +23,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     ModificarPageRoutingModule,
-    SharedModule
-    
+
   ],
-  declarations: [ModificarPage]
+  declarations: [ModificarPage,Plantilla2Component]
 })
 export class ModificarPageModule {}

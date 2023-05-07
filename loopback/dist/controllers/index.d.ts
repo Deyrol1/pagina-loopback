@@ -5,3 +5,5 @@ export * from './producto.controller';
 export * from './facturamongo.controller';
 export * from './categoria-producto.controller';
 export * from './producto-categoria.controller';
+export * from './user.controller';
+export * from './pozt.controller';
