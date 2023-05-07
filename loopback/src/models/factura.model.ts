@@ -45,7 +45,12 @@ export class Factura extends Entity {
   })
   total: number;
 
+  @property({
+    type: 'string',
+  })
+  userId?: string;
   // Define well-known properties here
+
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

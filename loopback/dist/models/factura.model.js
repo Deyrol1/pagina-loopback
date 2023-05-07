@@ -57,6 +57,12 @@ tslib_1.__decorate([
     }),
     tslib_1.__metadata("design:type", Number)
 ], Factura.prototype, "total", void 0);
+tslib_1.__decorate([
+    (0, repository_1.property)({
+        type: 'string',
+    }),
+    tslib_1.__metadata("design:type", String)
+], Factura.prototype, "userId", void 0);
 Factura = tslib_1.__decorate([
     (0, repository_1.model)({ settings: { strict: false } }),
     tslib_1.__metadata("design:paramtypes", [Object])

@@ -11,7 +11,9 @@ const path_1 = tslib_1.__importDefault(require("path"));
 const sequence_1 = require("./sequence");
 const authentication_1 = require("@loopback/authentication");
 const authentication_jwt_1 = require("@loopback/authentication-jwt");
+const services_1 = require("./services");
 const mongofactura_datasource_1 = require("./datasources/mongofactura.datasource");
+const repositories_1 = require("./repositories");
 class PruebaApplication extends (0, boot_1.BootMixin)((0, service_proxy_1.ServiceMixin)((0, repository_1.RepositoryMixin)(rest_1.RestApplication))) {
     constructor(options = {}) {
         super(options);
@@ -41,7 +43,8 @@ class PruebaApplication extends (0, boot_1.BootMixin)((0, service_proxy_1.Servic
         // This is where your User data will be stored.
         this.dataSource(mongofactura_datasource_1.MongofacturaDataSource, authentication_jwt_1.UserServiceBindings.DATASOURCE_NAME);
         // Bind the user service to the one in @loopback/authentication-jwt
-        this.bind(authentication_jwt_1.UserServiceBindings.USER_SERVICE).toClass(authentication_jwt_1.MyUserService);
+        this.bind(authentication_jwt_1.UserServiceBindings.USER_SERVICE).toClass(services_1.CustomUserService);
+        this.bind(authentication_jwt_1.UserServiceBindings.USER_REPOSITORY).toClass(repositories_1.UserRepository);
     }
 }
 exports.PruebaApplication = PruebaApplication;

@@ -8,6 +8,7 @@ export declare class Factura extends Entity {
     iva?: number;
     descuento?: number;
     total: number;
+    userId?: string;
     [prop: string]: any;
     constructor(data?: Partial<Factura>);
 }

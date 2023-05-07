@@ -14,7 +14,10 @@ const rest_1 = require("@loopback/rest");
 const security_1 = require("@loopback/security");
 const bcryptjs_1 = require("bcryptjs");
 const lodash_1 = tslib_1.__importDefault(require("lodash"));
-let NewUserRequest = class NewUserRequest extends authentication_jwt_1.User {
+const models_1 = require("../models");
+const repositories_1 = require("../repositories");
+const services_1 = require("../services");
+let NewUserRequest = class NewUserRequest extends models_1.User {
 };
 tslib_1.__decorate([
     (0, repository_1.property)({
@@ -37,7 +40,7 @@ const CredentialsSchema = {
         },
         password: {
             type: 'string',
-            minLength: 8,
+            minLength: 4,
         },
     },
 };
@@ -62,7 +65,7 @@ let UserController = class UserController {
         const userProfile = this.userService.convertToUserProfile(user);
         // create a JSON Web Token based on the user profile
         const token = await this.jwtService.generateToken(userProfile);
-        return { token };
+        return { userProfile, token };
     }
     async whoAmI(currentUserProfile) {
         return currentUserProfile[security_1.securityId];
@@ -128,7 +131,7 @@ tslib_1.__decorate([
                 content: {
                     'application/json': {
                         schema: {
-                            'x-ts-type': authentication_jwt_1.User,
+                            'x-ts-type': models_1.User,
                         },
                     },
                 },
@@ -152,8 +155,8 @@ UserController = tslib_1.__decorate([
     tslib_1.__param(0, (0, core_1.inject)(authentication_jwt_1.TokenServiceBindings.TOKEN_SERVICE)),
     tslib_1.__param(1, (0, core_1.inject)(authentication_jwt_1.UserServiceBindings.USER_SERVICE)),
     tslib_1.__param(2, (0, core_1.inject)(security_1.SecurityBindings.USER, { optional: true })),
-    tslib_1.__param(3, (0, repository_1.repository)(authentication_jwt_1.UserRepository)),
-    tslib_1.__metadata("design:paramtypes", [Object, authentication_jwt_1.MyUserService, Object, authentication_jwt_1.UserRepository])
+    tslib_1.__param(3, (0, repository_1.repository)(repositories_1.UserRepository)),
+    tslib_1.__metadata("design:paramtypes", [Object, services_1.CustomUserService, Object, repositories_1.UserRepository])
 ], UserController);
 exports.UserController = UserController;
-//# sourceMappingURL=user.controller.js.map
+//# sourceMappingURL=user2.controller.js.map

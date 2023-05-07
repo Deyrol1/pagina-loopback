@@ -6,10 +6,7 @@
 import {authenticate, TokenService} from '@loopback/authentication';
 import {
   Credentials,
-  MyUserService,
   TokenServiceBindings,
-  User,
-  UserRepository,
   UserServiceBindings,
 } from '@loopback/authentication-jwt';
 import {inject} from '@loopback/core';
@@ -25,6 +22,9 @@ import {SecurityBindings, securityId, UserProfile} from '@loopback/security';
 import {genSalt, hash} from 'bcryptjs';
 import _ from 'lodash';
 
+import { User } from '../models';
+import { UserRepository } from '../repositories';
+import { CustomUserService } from '../services';
 @model()
 export class NewUserRequest extends User {
   @property({
@@ -44,7 +44,7 @@ const CredentialsSchema: SchemaObject = {
     },
     password: {
       type: 'string',
-      minLength: 8,
+      minLength: 4,
     },
   },
 };
@@ -62,7 +62,7 @@ export class UserController {
     @inject(TokenServiceBindings.TOKEN_SERVICE)
     public jwtService: TokenService,
     @inject(UserServiceBindings.USER_SERVICE)
-    public userService: MyUserService,
+    public userService:  CustomUserService ,
     @inject(SecurityBindings.USER, {optional: true})
     public user: UserProfile,
     @repository(UserRepository) protected userRepository: UserRepository,
@@ -89,16 +89,20 @@ export class UserController {
   })
   async login(
     @requestBody(CredentialsRequestBody) credentials: Credentials,
-  ): Promise<{token: string}> {
+  ): Promise<{userProfile: object, token: string}> {
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
     // convert a User object into a UserProfile object (reduced set of properties)
     const userProfile = this.userService.convertToUserProfile(user);
 
     // create a JSON Web Token based on the user profile
-    const token = await this.jwtService.generateToken(userProfile);
-    return {token};
+     const token = await this.jwtService.generateToken(userProfile);
+    return {userProfile,token};
   }
+
+
+
+  
 
   @authenticate('jwt')
   @get('/whoAmI', {
@@ -121,6 +125,12 @@ export class UserController {
   ): Promise<string> {
     return currentUserProfile[securityId];
   }
+
+
+
+
+
+
 
   @post('/signup', {
     responses: {

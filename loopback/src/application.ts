@@ -12,11 +12,14 @@ import {MySequence} from './sequence';
 import {AuthenticationComponent} from '@loopback/authentication';
 import {
   JWTAuthenticationComponent,
-  MyUserService,
+
   // SECURITY_SCHEME_SPEC,
   UserServiceBindings,
 } from '@loopback/authentication-jwt';
+
+import { CustomUserService } from './services';
 import { MongofacturaDataSource } from './datasources/mongofactura.datasource';
+import { UserRepository } from './repositories';
 
 export {ApplicationConfig};
 
@@ -55,6 +58,14 @@ export class PruebaApplication extends BootMixin(
  // This is where your User data will be stored.
  this.dataSource(MongofacturaDataSource, UserServiceBindings.DATASOURCE_NAME);
 // Bind the user service to the one in @loopback/authentication-jwt
- this.bind(UserServiceBindings.USER_SERVICE).toClass(MyUserService);
+ this.bind(UserServiceBindings.USER_SERVICE).toClass(CustomUserService);
+
+ this.bind(UserServiceBindings.USER_REPOSITORY).toClass(
+  UserRepository,
+)
+
+
   }
+
+ 
 }

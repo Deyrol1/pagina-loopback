@@ -6,4 +6,5 @@ tslib_1.__exportStar(require("./producto.model"), exports);
 tslib_1.__exportStar(require("./item.model"), exports);
 tslib_1.__exportStar(require("./factura.model"), exports);
 tslib_1.__exportStar(require("./postear.model"), exports);
+tslib_1.__exportStar(require("./user.model"), exports);
 //# sourceMappingURL=index.js.map
