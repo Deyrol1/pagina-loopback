@@ -6,6 +6,7 @@ export class Factura {
     public iva?;
     public  descuento?;
     public  total;
+    public userId;
     set(data:any){
         this.id = data.id;
         this.fecha = data.fecha;
@@ -14,6 +15,7 @@ export class Factura {
         this.iva= data.iva;
         this.descuento= data.descuento;
         this.total = data.total;
+        this.userId= data.userId;
     }
 
 

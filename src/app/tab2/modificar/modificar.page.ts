@@ -80,8 +80,11 @@ export class ModificarPage implements OnInit {
    fac:any;
 
 
+   email:any;
 
    ngOnInit() {
+
+
     this.routeSub = this.route.params.subscribe((params: Params): void => {
       this.id = params['id'];
       this.nro = params['i'];
@@ -92,6 +95,7 @@ export class ModificarPage implements OnInit {
 
   this.facturasub = this.base.facturaselect$().subscribe((res: Factura)=>{
 
+    console.log("la factura completicada da:",res);
     
     this.inputRowValues= res.articulos;
 

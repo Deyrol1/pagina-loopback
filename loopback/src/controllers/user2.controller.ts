@@ -1,3 +1,4 @@
+
 // Copyright IBM Corp. and LoopBack contributors 2020. All Rights Reserved.
 // Node module: @loopback/example-todo-jwt
 // This file is licensed under the MIT License.
@@ -102,9 +103,16 @@ export class UserController {
 
 
 
+
+
+
+
+
+
+
   
 
-  @authenticate('jwt')
+  @authenticate('jwt')  
   @get('/whoAmI', {
     responses: {
       '200': {
@@ -128,6 +136,9 @@ export class UserController {
 
 
 
+  
+  
+ 
 
 
 

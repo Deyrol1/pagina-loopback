@@ -1,8 +1,11 @@
+
 import { BasedatosService } from './../../servicios/basedatos.service';
 
 import { Component, OnInit } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
 
 import { NavController } from '@ionic/angular';
+import { async, asyncScheduler } from 'rxjs';
 import { Factura } from 'src/app/modelos/factura';
 
 
@@ -21,7 +24,11 @@ export class AgregarPage implements OnInit {
   total:any;
   inputRowValues = [{}];
 
+  email:any;
 
+
+
+  token:any;
 
 
 
@@ -39,6 +46,20 @@ export class AgregarPage implements OnInit {
 
   constructor(public navCtrl: NavController, private base: BasedatosService) {
 
+    
+
+    
+
+
+  
+
+
+   
+
+  
+
+  
+
 
 
     
@@ -49,6 +70,7 @@ export class AgregarPage implements OnInit {
    generar(){
 
 
+    console.log("el token  en regiztro aca da:",this.token)
     this.factura = new Factura();
 
     let dato={                          
@@ -57,7 +79,9 @@ export class AgregarPage implements OnInit {
       subtotal:this.subtotal,
       iva:this.iva,
       descuento:this.descuento,
-      total:this.total
+      total:this.total,
+      userId: this.token,
+
     }
 
   
@@ -69,11 +93,54 @@ export class AgregarPage implements OnInit {
    }
 
 
-   correo:any;
+ 
    ngOnInit() {
 
-    console.log("la fecha da:",this.fecha)
+    
+    this.addtoken();
+
+
+    
+
+
+
+
    }
+
+   
+    async addtoken(){
+
+   
+      const { value } = await Preferences.get({ key: 'token' });
+      if(value)
+      this.base.token(value).then((res:any)=>{
+        console.log("El rez en token da:",res)
+        this.token =res;
+       
+  
+       
+      })
+    
+ 
+
+      this.addemail();
+
+    
+  
+   }
+
+   async addemail(){
+    const { value } = await Preferences.get({ key: 'email' });
+
+    this.email = value;
+ 
+
+   }
+
+
+ 
+  
+
  
 
 

@@ -22,7 +22,8 @@
         Fecha: {{ fechaf}}
       </ion-card-subtitle>
       <ion-card-subtitle >
-        encargado:  
+        encargado:  {{email}}
+     
       </ion-card-subtitle>
     </ion-label>
     </ion-item>
@@ -55,8 +56,7 @@
       <ion-col *ngFor="let i of inputRowValues; let ii=index" id="ciclo">
           <app-plantilla [data]="i" (onDelete)="onDelete($event)"></app-plantilla> 
       </ion-col>
-   
-
+    
       
       
       <ion-button id="add_row" class="add" (click)="addRow()"> Agregar fila 

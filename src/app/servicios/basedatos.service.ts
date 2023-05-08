@@ -75,11 +75,12 @@ export class BasedatosService {
 
   async  regfac(dato:any){
 
-    console.log("el dato ez:",JSON.stringify(dato))
+    console.log("en reg fact loz datoz zon:",dato)
     const opt ={
       url: this.url+"facturas",
       data: dato,
-      headers: {"content-type":"application/json"}
+      headers: {accept: 'application/json',
+      'Content-Type':'application/json'}
     };
  
   
@@ -274,13 +275,23 @@ export class BasedatosService {
       headers: {"content-type":"application/json"},
       data:dato
     };
- 
-  
-
     const response: HttpResponse = await CapacitorHttp.post(opt);
+    return response.data;
+  }
+
+  async token(token:any){
+    const opt ={
+      url: "http://localhost:3000/whoAmI",
+      headers: {
+        accept: 'application/json',
+        'Content-Type':'application/json',
+      'Authorization': "Bearer "+token
+    }
+    };
+    const response: HttpResponse = await CapacitorHttp.get(opt);
 
 
-
+    return response.data;
   }
 
 
