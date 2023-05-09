@@ -20,12 +20,14 @@ import {
   Factura,
 } from '../models';
 import {UserRepository} from '../repositories';
+import { authenticate } from '@loopback/authentication';
 
 export class UserFacturaController {
   constructor(
     @repository(UserRepository) protected userRepository: UserRepository,
   ) { }
 
+  @authenticate('jwt')
   @get('/users/{id}/facturas', {
     responses: {
       '200': {

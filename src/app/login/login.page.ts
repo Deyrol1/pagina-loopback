@@ -49,6 +49,13 @@ export class LoginPage implements OnInit {
         value: res.userProfile.email,
       });
 
+      await Preferences.set({
+        key: 'id',
+        value: res.userProfile.id,
+      });
+
+
+
         await Preferences.set({
           key: 'token',
           value: res.token,

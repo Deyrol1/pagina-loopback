@@ -6,6 +6,7 @@ const repository_1 = require("@loopback/repository");
 const rest_1 = require("@loopback/rest");
 const models_1 = require("../models");
 const repositories_1 = require("../repositories");
+const authentication_1 = require("@loopback/authentication");
 let UserFacturaController = class UserFacturaController {
     constructor(userRepository) {
         this.userRepository = userRepository;
@@ -24,6 +25,7 @@ let UserFacturaController = class UserFacturaController {
     }
 };
 tslib_1.__decorate([
+    (0, authentication_1.authenticate)('jwt'),
     (0, rest_1.get)('/users/{id}/facturas', {
         responses: {
             '200': {

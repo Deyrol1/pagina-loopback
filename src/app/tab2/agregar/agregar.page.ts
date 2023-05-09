@@ -116,9 +116,6 @@ export class AgregarPage implements OnInit {
       this.base.token(value).then((res:any)=>{
         console.log("El rez en token da:",res)
         this.token =res;
-       
-  
-       
       })
     
  

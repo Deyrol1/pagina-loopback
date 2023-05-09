@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { Factura } from '../modelos/factura';
 import { Producto } from '../modelos/producto';
 import { Categoria } from '../modelos/categoria';
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -40,28 +41,46 @@ export class BasedatosService {
 
    async todasfacturas ()  {
 
+ 
+    const{value} = await Preferences.get({ key: 'token' });
+ 
+
+  console.log("el value da:",value)
+
+    let id = await Preferences.get({ key: 'id' });
+
+
+    console.log("el id da:",id)
+  
+ 
+
+   
     this.facturas =[];
 
     const opt ={
-      url: this.url+"facturas"
+      url: this.url+"users/"+id.value+"/facturas",
+      headers:{  "Content-Type": "application/json",
+      "Authorization":'Bearer '+value
+
+      } 
     }
 
     const response: HttpResponse = await CapacitorHttp.get(opt);
 
 
-    console.log("el rezponze ez:",response);
+ 
    
     response.data.forEach((item:any)=>{
-      console.log("el item ez:",item);
+    
       this.factura= new Factura();
       this.factura.set(item);
       this.facturas.push(this.factura);
 
     });
 
-    console.log("laz facturaz zon:",this.facturas);
+  
     this.facturas$.next(this.facturas);
-    console.log("laz facturaz$ zon:",this.facturas$);
+  
     return this.facturas$;
    }
 
@@ -75,7 +94,6 @@ export class BasedatosService {
 
   async  regfac(dato:any){
 
-    console.log("en reg fact loz datoz zon:",dato)
     const opt ={
       url: this.url+"facturas",
       data: dato,
@@ -136,16 +154,16 @@ export class BasedatosService {
 
     const response: HttpResponse = await CapacitorHttp.get(opt);
    
-    console.log("el rezponze ez:",response);
+ 
     response.data.forEach((item:any)=>{
-      console.log("el item producto ez uga:",item);
+   
       this.producto= new Producto();
         this.producto.set(item);
         this.productos.push(this.producto);
     });
 
    
-    console.log("el producto final da:",this.productos)
+  
     this.productos$.next(this.productos);
    
     return this.productos$;
@@ -172,16 +190,16 @@ export class BasedatosService {
     const response: HttpResponse = await CapacitorHttp.get(opt);
 
 
-    console.log("el producto individual  ez: uhhkjdgkgd",response);
+
    
     this.producto= new Producto();
     this.producto.set(response.data);
 
-   console.log("el podructo uga ez:",this.producto);
+
     
 
     this.producto$.next(this.producto);
-    console.log("el producto$ ez:",this.producto$);
+
     return this.producto$;
    }
 
@@ -204,16 +222,15 @@ export class BasedatosService {
     const response: HttpResponse = await CapacitorHttp.get(opt);
 
 
-    console.log("el producto individual  ez: uhhkjdgkgd",response);
+    
    
     this.factura= new Factura();
     this.factura.set(response.data);
 
-   console.log("el podructo uga ez:",this.factura);
     
 
     this.factura$.next(this.factura);
-    console.log("el producto$ ez:",this.factura$);
+
     return this.factura$;
    }
 
@@ -227,7 +244,7 @@ export class BasedatosService {
 
   async  actfac(dato:any,id:any){
 
-    console.log("el dato ez:",JSON.stringify(dato))
+
     const opt ={
       url: this.url+"facturas/"+id,
       data: dato,
