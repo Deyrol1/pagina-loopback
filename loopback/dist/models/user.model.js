@@ -39,6 +39,7 @@ tslib_1.__decorate([
     (0, repository_1.property)({
         type: 'string',
         required: true,
+        unique: true,
         index: {
             unique: true,
         },

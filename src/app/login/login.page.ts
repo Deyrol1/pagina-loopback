@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
   
 
 
+  mal:any;
   email:any;
   contrasena:any;
  
@@ -64,6 +65,12 @@ export class LoginPage implements OnInit {
 
       }
 
+      else{
+        this.mal= true;
+
+
+      }
+
        
       
    
@@ -85,6 +92,7 @@ registro(){
     password:this.contrasena
   }
   this.base.registrouser(nuevo);
+  
 }
 
 }

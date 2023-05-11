@@ -24,7 +24,7 @@
         
           <ion-button color="secondary"  type="submit" (click)="registro()">registrar</ion-button>
           <ion-button color="secondary"  (click)="ingresar()" type="submit">Iniciar sesion</ion-button>
-         
+          <ion-text color="danger" *ngIf="mal">correo o contrasena incorrecto</ion-text>
         </ion-card>
 
     

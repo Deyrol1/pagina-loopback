@@ -37,6 +37,7 @@ export class User extends Entity {
   @property({
     type: 'string',
     required: true,
+    unique: true,
     index: {
       unique: true,
     },
