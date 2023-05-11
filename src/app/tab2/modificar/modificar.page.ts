@@ -6,6 +6,9 @@ import { NavController } from '@ionic/angular';
 import { Factura } from 'src/app/modelos/factura';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Preferences } from '@capacitor/preferences';
+
+
 
 
 
@@ -29,8 +32,8 @@ export class ModificarPage implements OnInit {
 
   public facturasub = new Subscription();  
 
-  fecha = new Date();
-  fechaf= this.fecha.toLocaleDateString();
+fecha:any;
+  fechaf:any;
 
 
   public factura:Factura;
@@ -48,6 +51,7 @@ export class ModificarPage implements OnInit {
     
    }
 
+   user:any;
 
 
    generar(){
@@ -61,7 +65,8 @@ export class ModificarPage implements OnInit {
       subtotal:this.subtotal,
       iva:this.iva,
       descuento:this.descuento,
-      total:this.total
+      total:this.total,
+      userId: this.user
     }
 
   
@@ -82,6 +87,15 @@ export class ModificarPage implements OnInit {
 
    email:any;
 
+   async addemail(){
+    const { value } = await Preferences.get({ key: 'email' });
+
+    this.email = value;
+ 
+
+   }
+   
+
    ngOnInit() {
 
 
@@ -96,15 +110,25 @@ export class ModificarPage implements OnInit {
   this.facturasub = this.base.facturaselect$().subscribe((res: Factura)=>{
 
     console.log("la factura completicada da:",res);
+
+    this.fecha = res.fecha;
+    this.user = res.userId;
+
+    console.log("la fecha da:",this.fecha)
+
+    this.fechaf = new Date(this.fecha).toLocaleDateString();
     
     this.inputRowValues= res.articulos;
 
     console.log("fac da:",this.inputRowValues);
+    this.addRow();
+    this.addemail();
 
   });
 
 
  
+  
 
 
 

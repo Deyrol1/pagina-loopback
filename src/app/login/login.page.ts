@@ -1,3 +1,4 @@
+import { async } from 'rxjs';
 import { BasedatosService } from 'src/app/servicios/basedatos.service';
 import { LoginService } from './../servicios/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,51 +28,52 @@ export class LoginPage implements OnInit {
   }
 
   ingresar(){
+
+
     let nuevo={
       email:this.email,
       password:this.contrasena
     }
    
-    
+    console.log(nuevo)
 
     this.base.login(nuevo).then(async(res:any)=>{
 
-     
+   
+      if(!res.error){
+        await Preferences.set({
+          key: 'email',
+          value: res.userProfile.email,
+        });
+  
+        await Preferences.set({
+          key: 'id',
+          value: res.userProfile.id,
+        });
+  
+  
+  
+          await Preferences.set({
+            key: 'token',
+            value: res.token,
+          });
+  
+          this.router.navigate(['/tabs']);
+        
+      
 
+      }
 
-
-
-
+       
       
    
-      await Preferences.set({
-        key: 'email',
-        value: res.userProfile.email,
-      });
-
-      await Preferences.set({
-        key: 'id',
-        value: res.userProfile.id,
-      });
-
-
-
-        await Preferences.set({
-          key: 'token',
-          value: res.token,
-        });
-      
-    
+     
   
     
      })
 
-
-    
-
  
 
-    this.router.navigate(['/tabs']);
   
 
 }

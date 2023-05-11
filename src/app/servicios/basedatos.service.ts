@@ -287,6 +287,7 @@ export class BasedatosService {
 
   }
   async login(dato:any){
+    console.log("zi llega al zerivce")
     const opt ={
       url: "http://localhost:3000/users/login",
       headers: {"content-type":"application/json"},
